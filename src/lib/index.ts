@@ -3,5 +3,6 @@ import { getUser, createProduct, createPost, getProducts, getProductById, getPos
 import type {Product, Post} from "./types";
 import Navbar from "./shared/Navbar.svelte"
 import Loader from "./shared/Loader.svelte"
+import Modal from "./shared/Modal.svelte"
 
-export { getUser, Navbar, createProduct, Loader, createPost, getProducts, getProductById, getPosts, type Product, type Post };
+export { getUser, Navbar, createProduct, Loader, createPost, getProducts, getProductById, getPosts, type Product, type Post, Modal };

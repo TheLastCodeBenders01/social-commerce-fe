@@ -1,7 +1,9 @@
 <script lang="ts">
   // No Svelte logic for now, only design
   import IconPhotoVideo from "@tabler/icons-svelte/icons/photo-video";
-  import { createPost, getProducts, type Product, Loader } from "$lib";
+  import { createPost, getProducts, type Product, Loader, Modal } from "$lib";
+   import IconCircleCheck from "@tabler/icons-svelte/icons/circle-check"
+
   import { onMount } from "svelte";
   import {goto} from "$app/navigation";
 
@@ -11,6 +13,7 @@
   let availableProducts: Product[] = $state([]);
   let chosenProducts: string[] = $state([]);
 
+  let modalOpen = $state(false);
   let isLoading = $state(false);
 
   onMount(async () => {
@@ -50,10 +53,13 @@
     );
     console.log(response);
 
+    setTimeout(() => {modalOpen = true}, 4000)
+
     goto("/browse");
   }
 </script>
 
+<Modal bind:open={modalOpen}><div class="flex items-center"><IconCircleCheck class="mr-2 stroke-green-600" />Post created successfully</div></Modal>
 <div class="min-h-screen bg-slate-50 items-center py-30 justify-items-center">
   <div
     class="w-full max-w-xl bg-slate-100 shadow-sm rounded-md border-1 border-slate-200 p-6 sm:p-10"

@@ -4,11 +4,11 @@
 <style>
     /* HTML: <div class="loader"></div> */
 .loader {
-  width: 25px;
+  width: var(--width, 25px);
   padding: 8px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: white;
+  background: var(--color, white);
   --_m: 
     conic-gradient(#0000 10%,#000),
     linear-gradient(#000 0 0) content-box;

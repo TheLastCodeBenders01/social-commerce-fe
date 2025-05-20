@@ -1,5 +1,5 @@
 import { Axios } from "axios";
-
+import {type Product} from "../types";
 
 // Setup axios instance
 const axios = new Axios({
@@ -119,7 +119,7 @@ export const getProducts = async () => {
  * @returns {Promise<any>} A promise that resolves with the product data.
  * @throws Will throw an error if the request fails.
  */
-export const getProductById = async (productId: string) => {
+export const getProductById: (productId: string) => Promise<Product> = async (productId: string) => {
     try {
         const response = await axios.get(`/products/${productId}`);
         return JSON.parse(response.data);

@@ -1,12 +1,14 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { getPosts, type Post } from "$lib";
+    import { getPosts, type Post, Loader } from "$lib";
 
     let posts: Post[] = $state([]);
+    let isLoading = $state(true);
 
     onMount(async () => {
         const response = await getPosts(100);
         posts = response;
+        isLoading = false;
     });
 
     function addToCart(productId: string) {
@@ -20,6 +22,11 @@
 
 <div class="p-4 justify-items-center py-24">
     <div class="w-full md:w-sm space-y-36 lg:w-md lg:space-y-48 xl:w-lg">
+        {#if isLoading}
+            <div class="w-full h-screen justify-items-center content-center">
+                <Loader --color="#3b82f6" --width="60px"/>
+            </div>
+        {:else}
         {#each posts as post}
             <div class="space-y-24 lg:space-y-36">
                 <div class="aspect-[9/16] bg-gray-200 rounded-md mb-4">
@@ -60,5 +67,6 @@
                 </div>
             </div>
         {/each}
+        {/if}
     </div>
 </div>
