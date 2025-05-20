@@ -1,7 +1,7 @@
 <script>
     import { getUser } from "$lib";
     import { onMount } from "svelte";
-    import Dropdown from "./Dropdown.svelte";
+    import Dropdown from "$lib/shared/Dropdown.svelte";
     import IconMenu2 from "@tabler/icons-svelte/icons/menu-2";
 
     let user = $state();
